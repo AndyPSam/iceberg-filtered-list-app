@@ -1,0 +1,85 @@
+<p>Filter projects by approval statuses</p>
+
+<div class="btn-group btn-group-toggle mb-2" data-toggle="buttons">
+  <div class="input-group-prepend">
+    <span class="input-group-text status" id="basic-addon3">Technical Feasibility</span>
+  </div>
+  <label class="btn btn-outline-primary" [ngClass]="getActiveClasses('', filteredStatus1)">
+    <input type="radio" name="filter" value="" autocomplete="off" checked [(ngModel)]="filteredStatus1"> All
+  </label>
+  <label class="btn btn-outline-secondary" [ngClass]="getActiveClasses('pending', filteredStatus1)">
+    <input type="radio" name="filter" value="pending" autocomplete="off" [(ngModel)]="filteredStatus1"> Pending
+  </label>
+  <label class="btn btn-outline-success" [ngClass]="getActiveClasses('approved', filteredStatus1)">
+    <input type="radio" name="filter" value="approved" autocomplete="off" [(ngModel)]="filteredStatus1"> Approved
+  </label>
+  <label class="btn btn-outline-warning" [ngClass]="getActiveClasses('reconsider', filteredStatus1)">
+    <input type="radio" name="filter" value="reconsider" autocomplete="off" [(ngModel)]="filteredStatus1"> Reconsider
+  </label>
+  <label class="btn btn-outline-danger" [ngClass]="getActiveClasses('declined', filteredStatus1)">
+    <input type="radio" name="filter" value="declined" autocomplete="off" [(ngModel)]="filteredStatus1"> Declined
+  </label>
+</div>
+
+<div class="btn-group btn-group-toggle mb-2" data-toggle="buttons">
+  <div class="input-group-prepend">
+    <span class="input-group-text status" id="basic-addon3">Market Feasibility</span>
+  </div>
+  <label class="btn btn-outline-primary" [ngClass]="getActiveClasses('', filteredStatus2)">
+    <input type="radio" name="filter" value="" autocomplete="off" checked [(ngModel)]="filteredStatus2"> All
+  </label>
+  <label class="btn btn-outline-secondary" [ngClass]="getActiveClasses('pending', filteredStatus2)">
+    <input type="radio" name="filter" value="pending" autocomplete="off" [(ngModel)]="filteredStatus2"> Pending
+  </label>
+  <label class="btn btn-outline-success" [ngClass]="getActiveClasses('approved', filteredStatus2)">
+    <input type="radio" name="filter" value="approved" autocomplete="off" [(ngModel)]="filteredStatus2"> Approved
+  </label>
+  <label class="btn btn-outline-warning" [ngClass]="getActiveClasses('reconsider', filteredStatus2)">
+    <input type="radio" name="filter" value="reconsider" autocomplete="off" [(ngModel)]="filteredStatus2"> Reconsider
+  </label>
+  <label class="btn btn-outline-danger" [ngClass]="getActiveClasses('declined', filteredStatus2)">
+    <input type="radio" name="filter" value="declined" autocomplete="off" [(ngModel)]="filteredStatus2"> Declined
+  </label>
+</div>
+
+<div class="btn-group btn-group-toggle mb-3" data-toggle="buttons">
+  <div class="input-group-prepend">
+    <span class="input-group-text status" id="basic-addon3">Business Case Approval</span>
+  </div>
+  <label class="btn btn-outline-primary" [ngClass]="getActiveClasses('', filteredStatus3)">
+    <input type="radio" name="filter" value="" autocomplete="off" checked [(ngModel)]="filteredStatus3"> All
+  </label>
+  <label class="btn btn-outline-secondary" [ngClass]="getActiveClasses('pending', filteredStatus3)">
+    <input type="radio" name="filter" value="pending" autocomplete="off" [(ngModel)]="filteredStatus3"> Pending
+  </label>
+  <label class="btn btn-outline-success" [ngClass]="getActiveClasses('approved', filteredStatus3)">
+    <input type="radio" name="filter" value="approved" autocomplete="off" [(ngModel)]="filteredStatus3"> Approved
+  </label>
+  <label class="btn btn-outline-warning" [ngClass]="getActiveClasses('reconsider', filteredStatus3)">
+    <input type="radio" name="filter" value="reconsider" autocomplete="off" [(ngModel)]="filteredStatus3"> Reconsider
+  </label>
+  <label class="btn btn-outline-danger" [ngClass]="getActiveClasses('declined', filteredStatus3)">
+    <input type="radio" name="filter" value="declined" autocomplete="off" [(ngModel)]="filteredStatus3"> Declined
+  </label>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Project Title</th>
+        <th scope="col" class="status">Technical Feasibility</th>
+        <th scope="col" class="status">Market Feasibility</th>
+        <th scope="col" class="status">Business Case Approval</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let project of projects | filter:filteredStatus1:'status1' | filter:filteredStatus2:'status2' | filter:filteredStatus3:'status3'">
+        <td>{{ project.name | shorten:20 }}</td>
+        <td class="status"><span class="badge" [ngClass]="getStatusClasses(project.status1)">{{ project.status1 | titlecase }}</span></td>
+        <td class="status"><span class="badge" [ngClass]="getStatusClasses(project.status2)">{{ project.status2 | titlecase }}</span></td>
+        <td class="status"><span class="badge" [ngClass]="getStatusClasses(project.status3)">{{ project.status3 | titlecase }}</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
