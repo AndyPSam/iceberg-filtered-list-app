@@ -1,6 +1,10 @@
-# IceApp
+# IceApp (ICEBerg filtered list app)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
+
+## Dependencies
+
+Run `npm install`  inside this project folder to install all dependencies.
 
 ## Development server
 
