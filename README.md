@@ -1,5 +1,7 @@
 # IceApp (ICEBerg filtered list app)
 
+Test this project at [StackBlitz](https://stackblitz.com/github/AndyPSam/iceberg-filtered-list-app/)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
 
 ## Dependencies
